@@ -1,0 +1,35 @@
+Description: Aquia IAM cross-account Security Auditor Role
+
+Parameters:
+  aquiaAccountID:
+    Type: String
+    Default: 
+  
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  ReadOnlyAuditRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: 'ReadOnlyAuditRole'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Federated: !Sub 'arn:aws:iam::${AWS::aquiaAccountId}:saml-provider/AWSSSO_6ca0ec7ff66cba2c_DO_NOT_DELETE'
+            Action: 
+              - 'sts:AssumeRoleWithSAML'
+              - 'sts:TagSession'
+            Condition:
+              StringEquals:
+                'SAML:aud': 'https://signin.aws.amazon.com/saml'
+        ManagedPolicyArns:
+          - 'arn:aws:iam::aws:policy/SecurityAudit'
+        Tags:
+          - Key: 'tag-key'
+            Value: 'tag-value'
+
+Outputs:
+  RoleARN:
+    Description: 'ARN of the read-only audit role'
+    Value: !GetAtt ReadOnlyAuditRole.Arn
