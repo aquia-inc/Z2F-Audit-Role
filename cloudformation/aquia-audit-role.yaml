@@ -16,7 +16,7 @@ Resources:
         Statement:
           - Effect: 'Allow'
             Principal:
-              Federated: !Sub 'arn:aws:iam::${AWS::aquiaAccountId}:saml-provider/AWSSSO_6ca0ec7ff66cba2c_DO_NOT_DELETE'
+              Federated: !Sub 'arn:aws:iam::${AWS::aquiaAccountId}:saml-provider/AWSSSO_1a5b0795c9c170a9_DO_NOT_DELETE'
             Action: 
               - 'sts:AssumeRoleWithSAML'
               - 'sts:TagSession'
