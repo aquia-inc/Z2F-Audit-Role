@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"  # Change to the appropriate region
+  region = var.aws_region
 }
 
 # Create the IAM role
