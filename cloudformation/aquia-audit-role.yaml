@@ -3,7 +3,7 @@ Description: Aquia IAM cross-account Security Auditor Role
 Parameters:
   aquiaAccountID:
     Type: String
-    Default: 
+    Default: 590183861461
   
 AWSTemplateFormatVersion: '2010-09-09'
 Resources:
