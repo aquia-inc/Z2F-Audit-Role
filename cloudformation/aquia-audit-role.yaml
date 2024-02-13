@@ -1,9 +1,4 @@
 Description: Aquia IAM cross-account Security Auditor Role
-
-Parameters:
-  aquiaAccountID:
-    Type: String
-    Default: 590183861461
   
 AWSTemplateFormatVersion: '2010-09-09'
 Resources:
@@ -16,7 +11,7 @@ Resources:
         Statement:
           - Effect: 'Allow'
             Principal:
-              AWS: !Sub 'arn:aws:iam::${AWS::aquiaAccountId}:root'
+              AWS: !Sub 'arn:aws:iam::590183861461:root'
             Action: 
               - 'sts:AssumeRole'
       ManagedPolicyArns:
