@@ -12,17 +12,11 @@ resource "aws_iam_role" "readonly_audit_role" {
       {
         Effect: "Allow",
         Principal: {
-          Federated: "arn:aws:iam::${var.aquia_account_id}:saml-provider/AWSSSO_6ca0ec7ff66cba2c_DO_NOT_DELETE"
+          "AWS": "arn:aws:iam::${var.aquia_account_id}:root"
         },
         Action: [
-          "sts:AssumeRoleWithSAML",
-          "sts:TagSession"
-        ],
-        Condition: {
-          StringEquals: {
-            "SAML:aud": "https://signin.aws.amazon.com/saml"
-          }
-        }
+          "sts:AssumeRole"
+        ]
       }
     ]
   })

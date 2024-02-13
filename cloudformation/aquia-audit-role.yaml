@@ -16,18 +16,14 @@ Resources:
         Statement:
           - Effect: 'Allow'
             Principal:
-              Federated: !Sub 'arn:aws:iam::${AWS::aquiaAccountId}:saml-provider/AWSSSO_1a5b0795c9c170a9_DO_NOT_DELETE'
+              AWS: !Sub 'arn:aws:iam::${AWS::aquiaAccountId}:root'
             Action: 
-              - 'sts:AssumeRoleWithSAML'
-              - 'sts:TagSession'
-            Condition:
-              StringEquals:
-                'SAML:aud': 'https://signin.aws.amazon.com/saml'
-        ManagedPolicyArns:
-          - 'arn:aws:iam::aws:policy/SecurityAudit'
-        Tags:
-          - Key: 'tag-key'
-            Value: 'tag-value'
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/SecurityAudit'
+      Tags:
+        - Key: 'tag-key'
+          Value: 'tag-value'
 
 Outputs:
   RoleARN:
