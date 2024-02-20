@@ -1,3 +1,7 @@
+# Description
+
+The IAM role created by the CloudFormation and Terraform scripts serves a crucial purpose in facilitating security audits as part of the Zero 2 FedRAMP (Z2F) gap assessment and remediation process. This role acts as a means for Aquia's Z2F AWS account to access and perform security auditor tasks within customer accounts. By granting the necessary permissions through this role, Aquia members can assume it from their Z2F AWS account, thereby gaining the privileges required to assess security controls, identify gaps, and help implement remediations where necessary.
+
 # Using CloudFormation Script:
 
 ## Prerequisites:
