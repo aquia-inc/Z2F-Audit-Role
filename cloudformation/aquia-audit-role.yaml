@@ -1,4 +1,9 @@
 Description: Aquia IAM cross-account Security Auditor Role
+
+Parameters:
+  accountID:
+    Type: String
+    Description: Aquia AWS Z2F Account ID
   
 AWSTemplateFormatVersion: '2010-09-09'
 Resources:
@@ -11,7 +16,7 @@ Resources:
         Statement:
           - Effect: 'Allow'
             Principal:
-              AWS: !Sub 'arn:aws:iam::590183861461:root'
+              AWS: !Sub 'arn:aws:iam::${accountID}:root'
             Action: 
               - 'sts:AssumeRole'
       ManagedPolicyArns:
